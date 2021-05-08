@@ -80,4 +80,8 @@ public class ColonistService {
         }
     }
 
+    public String refresh(String colonistId) {
+        return jwtTokenProvider.createToken(colonistId, colonistRepo.findByColonistId(colonistId).getRoles());
+    }
+
 }

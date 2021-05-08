@@ -7,7 +7,10 @@ package com.tbg.mars.controller;
 
 import com.tbg.mars.service.ColonistService;
 import com.tbg.mars.request.CreateColonistRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,5 +42,11 @@ public class ColonistController {
     public String createColonist(
             @RequestBody CreateColonistRequest createColonistRequest) {
         return colonistService.createColonist(createColonistRequest);
+    }
+
+    @GetMapping(value = "/refresh")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public String refresh(HttpServletRequest req) {
+        return colonistService.refresh(req.getRemoteUser());
     }
 }
