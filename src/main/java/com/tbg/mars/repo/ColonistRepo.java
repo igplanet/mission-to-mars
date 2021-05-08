@@ -14,4 +14,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ColonistRepo extends JpaRepository<Colonist, Long> {
 
+    public Colonist findByColonistId(String colonistId);
+
+    public boolean existsByColonistId(String colonistId);
+
 }
