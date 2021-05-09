@@ -33,9 +33,9 @@ public class Unit {
     private String description;
     @Size(max = 1000)
     private String cancellationPolicy;
-    @Column(scale = 2)
-    private BigDecimal price;
+    @Column(scale = 3)
+    private String price;
     @Column(scale = 1)
-    private BigDecimal Score;
+    private BigDecimal score;
 
 }
