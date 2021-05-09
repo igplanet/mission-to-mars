@@ -6,12 +6,11 @@
 package com.tbg.mars.entity;
 
 import java.math.BigDecimal;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import lombok.Data;
 
@@ -30,11 +29,13 @@ public class Unit {
     private String image;
     private String title;
     private String region;
+    @Size(max = 1000)
     private String description;
+    @Size(max = 1000)
     private String cancellationPolicy;
+    @Column(scale = 2)
     private BigDecimal price;
-    @Min(value = 1)
-    @Max(value = 5)
-    private Integer Score;
+    @Column(scale = 1)
+    private BigDecimal Score;
 
 }

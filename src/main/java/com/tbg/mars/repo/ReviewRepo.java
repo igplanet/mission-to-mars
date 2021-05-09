@@ -5,13 +5,13 @@
  */
 package com.tbg.mars.repo;
 
-import com.tbg.mars.entity.Rating;
+import com.tbg.mars.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author oghomwen.aigbedion
  */
-public interface RatingRepo extends JpaRepository<Rating, Long> {
+public interface ReviewRepo extends JpaRepository<Review, Long> {
 
 }

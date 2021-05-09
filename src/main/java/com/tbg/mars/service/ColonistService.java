@@ -47,10 +47,7 @@ public class ColonistService {
 
     public String createColonist(CreateColonistRequest request) {
 
-        List<String> violations = validator.validate(request);
-        if (!violations.isEmpty()) {
-            throw new CustomException(violations.get(0), HttpStatus.UNPROCESSABLE_ENTITY);
-        }
+        validator.validateRequest(request);
 
         if (!colonistRepo.existsByColonistId(request.getColonistId())) {
             Colonist colonist = new Colonist();

@@ -12,8 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import lombok.Data;
 
@@ -23,7 +21,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class Rating {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +30,6 @@ public class Rating {
     private Unit unit;
     @ManyToOne
     private Colonist colonist;
-    @Min(value = 1)
-    @Max(value = 5)
     private Integer score;
     @Size(max = 1000)
     private String comment;
