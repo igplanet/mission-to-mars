@@ -9,6 +9,11 @@ import com.tbg.mars.entity.Unit;
 import com.tbg.mars.service.UnitService;
 import com.tbg.mars.util.UnitProperty;
 import com.tbg.mars.util.UnitSearchProperty;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/unit")
+@Api(tags = "Unit")
 public class UnitController {
 
     @Autowired
@@ -35,6 +41,14 @@ public class UnitController {
     @GetMapping("/units")
     @PreAuthorize("hasRole('ROLE_USER')")
     @ResponseBody
+    @ApiOperation(value = "Allows for infinite listing of Units to be implemented in the browser", response = Page.class, authorizations = {
+        @Authorization(value = "apiKey")})
+    @ApiResponses(value = {
+        @ApiResponse(code = 400, message = "Something went wrong")
+        ,
+    @ApiResponse(code = 403, message = "Access denied")
+        ,
+    @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
     public Page<Unit> getUnits(
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size,
@@ -47,6 +61,14 @@ public class UnitController {
     @PostMapping("/search")
     @PreAuthorize("hasRole('ROLE_USER')")
     @ResponseBody
+    @ApiOperation(value = "Allow searching for units based on title or region and sorting by score", response = Page.class, authorizations = {
+        @Authorization(value = "apiKey")})
+    @ApiResponses(value = {
+        @ApiResponse(code = 400, message = "Something went wrong")
+        ,
+    @ApiResponse(code = 403, message = "Access denied")
+        ,
+    @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
     public Page<Unit> searchUnits(
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size,

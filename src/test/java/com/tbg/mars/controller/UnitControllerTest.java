@@ -5,9 +5,7 @@
  */
 package com.tbg.mars.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tbg.mars.MissionToMarsApplication;
-import com.tbg.mars.entity.Unit;
 import com.tbg.mars.request.CreateColonistRequest;
 import com.tbg.mars.service.ColonistService;
 import org.junit.jupiter.api.BeforeAll;

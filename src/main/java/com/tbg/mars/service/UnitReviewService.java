@@ -47,7 +47,7 @@ public class UnitReviewService {
     public String addReview(String colonistId, Long unitId, UnitReviewRequest unitReviewRequest) {
         Colonist colonist = colonistRepo.findByColonistId(colonistId);
         if (colonist == null) {
-            throw new CustomException("Colonist not found", HttpStatus.NOT_FOUND);
+            throw new CustomException("Colonist not found", HttpStatus.BAD_REQUEST);
         }
 
         Optional<Unit> optionalUnit = unitRepo.findById(unitId);
